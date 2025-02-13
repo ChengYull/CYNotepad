@@ -6,5 +6,6 @@
         <file>icon/open.png</file>
         <file>icon/upload.png</file>
         <file>icon/file_green.png</file>
+        <file>test.txt</file>
     </qresource>
 </RCC>

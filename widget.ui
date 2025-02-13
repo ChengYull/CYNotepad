@@ -236,5 +236,22 @@ QPushButton:pressed { border-image: url(:/icon/file.png);}</string>
  <resources>
   <include location="res.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>btnClose</sender>
+   <signal>clicked()</signal>
+   <receiver>Widget</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>103</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>249</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
