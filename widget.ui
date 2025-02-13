@@ -20,7 +20,7 @@
    <iconset resource="res.qrc">
     <normaloff>:/icon/file_green.png</normaloff>:/icon/file_green.png</iconset>
   </property>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -44,7 +44,7 @@
       <property name="styleSheet">
        <string notr="true">background-color: rgb(255, 239, 235);</string>
       </property>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -70,7 +70,8 @@
           </property>
           <property name="styleSheet">
            <string notr="true">QPushButton { border-image: url(:/icon/file.png); }
-QPushButton:hover { border-image: url(:/icon/open.png);}
+QPushButton:hover {background-color: rgb(255, 255, 255);
+border-image: url(:/icon/open.png);}
 QPushButton:pressed { border-image: url(:/icon/file.png);}</string>
           </property>
           <property name="text">
@@ -93,7 +94,11 @@ QPushButton:pressed { border-image: url(:/icon/file.png);}</string>
            </size>
           </property>
           <property name="styleSheet">
-           <string notr="true">QPushButton { border-image: url(:/icon/upload.png); }</string>
+           <string notr="true">QPushButton { border-image: url(:/icon/upload.png); }
+
+
+QPushButton:hover { background-color: rgb(255, 221, 167); }
+</string>
           </property>
           <property name="text">
            <string/>
@@ -110,6 +115,7 @@ QPushButton:pressed { border-image: url(:/icon/file.png);}</string>
           </property>
           <property name="styleSheet">
            <string notr="true">QPushButton { border-image: url(:/icon/close.png); }
+QPushButton:hover { background-color: rgb(255, 221, 167); }
 </string>
           </property>
           <property name="text">
@@ -157,13 +163,13 @@ QPushButton:pressed { border-image: url(:/icon/file.png);}</string>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(255, 239, 235);</string>
       </property>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>0</x>
          <y>0</y>
          <width>501</width>
-         <height>22</height>
+         <height>23</height>
         </rect>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout">
@@ -186,7 +192,7 @@ QPushButton:pressed { border-image: url(:/icon/file.png);}</string>
         <item>
          <widget class="QLabel" name="posLabel">
           <property name="text">
-           <string>第1行第2列</string>
+           <string>第1行第1列</string>
           </property>
          </widget>
         </item>
@@ -195,19 +201,34 @@ QPushButton:pressed { border-image: url(:/icon/file.png);}</string>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Fixed</enum>
+          </property>
           <property name="sizeHint" stdset="0">
            <size>
-            <width>20</width>
+            <width>15</width>
             <height>20</height>
            </size>
           </property>
          </spacer>
         </item>
         <item>
-         <widget class="QLabel" name="codeLabel">
-          <property name="text">
-           <string>utf-8</string>
-          </property>
+         <widget class="QComboBox" name="comboBox">
+          <item>
+           <property name="text">
+            <string>UTF-8</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>UTF-16</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>ASNI</string>
+           </property>
+          </item>
          </widget>
         </item>
         <item>

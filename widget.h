@@ -26,11 +26,18 @@ private:
     QFile m_file;
     QString m_text = "";
     QFileInfo m_fileInfo;
+    QString m_code = "UTF-8";
+    QPoint m_pos;
 private slots:
     void on_btnOpen_clicked();
 
     void on_btnSave_clicked();
 
+    void on_btnClose_clicked();
+
+    void on_comboBox_changed();
+
+    void on_cursor_changed();
 private:
     Ui::Widget *ui;
 };
