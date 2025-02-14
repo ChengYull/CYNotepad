@@ -15,6 +15,17 @@ Widget::Widget(QWidget *parent)
     connect(ui->comboBox, &QComboBox::currentTextChanged, this, &Widget::on_comboBox_changed);
     // 连接光标变化时更新右下角光标位置
     connect(ui->textEdit, &QTextEdit::cursorPositionChanged, this, &Widget::on_cursor_changed);
+
+    // 快捷键
+    QShortcut *openShortcut = new QShortcut(QKeySequence(tr("Ctrl+O", "File|Open")), this);
+    QShortcut *saveShortcut = new QShortcut(QKeySequence(tr("Ctrl+S", "File|Save")), this);
+    QShortcut *zoomInShortcut = new QShortcut(QKeySequence(tr("Ctrl+=", "File|Save")), this);
+    QShortcut *zoomOutShortcut = new QShortcut(QKeySequence(tr("Ctrl+-", "File|Save")), this);
+
+    connect(openShortcut, &QShortcut::activated, this, &Widget::on_btnOpen_clicked);
+    connect(saveShortcut, &QShortcut::activated, this, &Widget::on_btnSave_clicked);
+    connect(zoomInShortcut, &QShortcut::activated, this, &Widget::on_zoom_in);
+    connect(zoomOutShortcut, &QShortcut::activated, this, &Widget::on_zoom_out);
 }
 
 Widget::~Widget()
@@ -113,7 +124,6 @@ void Widget::on_btnClose_clicked()
 
 void Widget::on_comboBox_changed(){
     m_code = ui->comboBox->currentText();
-    qDebug() << m_pos;
     if(m_file.fileName().isEmpty())
         return;
     // 当前文件打开时刷新显示
@@ -140,5 +150,43 @@ void Widget::on_cursor_changed(){
     QString posInfo = "第" + QString::fromStdString(std::to_string(row))
                       + "行,第" + QString::fromStdString(std::to_string(col)) + "列";
     ui->posLabel->setText(posInfo);
+
+    // 设置当前行高亮显示
+    QList<QTextEdit::ExtraSelection> selections;
+    QTextEdit::ExtraSelection es;
+
+    es.cursor = cursor;
+    //设置颜色
+    QBrush qBrush(Qt::lightGray);
+    es.format.setBackground(qBrush);
+    es.format.setProperty(QTextFormat::FullWidthSelection, true);
+    // 添加设置
+    selections.append(es);
+    ui->textEdit->setExtraSelections(selections);
+
+}
+
+void Widget::on_zoom_in()
+{
+    // 获得字体信息
+    QFont font = ui->textEdit->font();
+    // 字体大小
+    int fontSize = font.pointSize();
+    if(fontSize == -1) return;
+    // 改变大小
+    font.setPointSize(fontSize + 1);
+    ui->textEdit->setFont(font);
+}
+
+void Widget::on_zoom_out()
+{
+    // 获得字体信息
+    QFont font = ui->textEdit->font();
+    // 字体大小
+    int fontSize = font.pointSize();
+    if(fontSize == -1) return;
+    // 改变大小
+    font.setPointSize(fontSize - 1);
+    ui->textEdit->setFont(font);
 }
 

@@ -7,6 +7,9 @@
 #include <QDebug>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QList>
+#include <QShortcut>
+#include <QKeySequence>
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class Widget;
@@ -38,6 +41,10 @@ private slots:
     void on_comboBox_changed();
 
     void on_cursor_changed();
+
+    void on_zoom_in();
+
+    void on_zoom_out();
 private:
     Ui::Widget *ui;
 };
