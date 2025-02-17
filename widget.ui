@@ -144,7 +144,7 @@ QPushButton:hover { background-color: rgb(255, 221, 167); }
      </widget>
     </item>
     <item>
-     <widget class="QTextEdit" name="textEdit"/>
+     <widget class="MyTextEdit" name="textEdit"/>
     </item>
     <item>
      <widget class="QWidget" name="widgetBottom" native="true">
@@ -254,6 +254,13 @@ QPushButton:hover { background-color: rgb(255, 221, 167); }
    </layout>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>MyTextEdit</class>
+   <extends>QTextEdit</extends>
+   <header location="global">mytextedit.h</header>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="res.qrc"/>
  </resources>
